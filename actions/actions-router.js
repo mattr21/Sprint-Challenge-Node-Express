@@ -41,6 +41,20 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// PUT - change action
+router.put('/:id', async (req, res) => {
+    try {
+        const action = await actionsDB.update(req.params.id, req.body);
+        if (action) {
+            res.status(200).json(action);
+        } else {
+            res.status(404).json({ message: 'The action could not be found.' });
+        }
 
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error updating action.' });
+    }
+});
 
 module.exports = router;
