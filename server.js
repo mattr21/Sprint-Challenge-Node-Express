@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require('express'); 
 
-// const usersRouter = require('./users/projects-router.js');
-// const postsRouter = require('./posts/actions-router.js');
+// const usersRouter = require('./projects/projects-router.js');
+// const postsRouter = require('./actions/actions-router.js');
 
 const server = express();
 
 server.use(express.json());
 
-// server.use('/api/projects', usersRouter);
-// server.use('/api/actions', postsRouter);
+// server.use('/api/projects', projectsRouter);
+// server.use('/api/actions', actionsRouter);
 
 module.exports = server;
