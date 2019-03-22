@@ -4,8 +4,21 @@ const projectsDB = require('../data/helpers/projectModel.js');
 
 const router = express.Router();
 
+// GET - retrieve all users
+router.get('/', async (req, res) => {
+    console.log(res);
+    try {
+        const projects = await projectsDB.get(req.query);
+        res.status(200).json(projects);
+    } catch (error) {
+        // console.log(error);
+        res.status(500).json({ message: 'Error retrieving the projects.' });
+    }
+});
+
 // GET - retrieve project by id
 router.get('/:id', async (req, res) => {
+    console.log(req.params);
     try {
         const projects = await projectsDB.get(req.params.id);
         res.status(200).json(projects);
